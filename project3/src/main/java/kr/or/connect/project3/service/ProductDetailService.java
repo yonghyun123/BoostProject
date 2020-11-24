@@ -8,4 +8,5 @@ import kr.or.connect.project3.dto.ProductType;
 public interface ProductDetailService {
 	public List<DisplayType> getDisplayType(int id, int displayId);
 	public List<ProductType> getProductDetail(int id);
+	public String getProductImageById(Integer imageId, String type);
 }

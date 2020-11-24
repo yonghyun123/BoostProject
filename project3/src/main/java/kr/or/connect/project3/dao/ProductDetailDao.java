@@ -1,6 +1,8 @@
 package kr.or.connect.project3.dao;
 
-import static kr.or.connect.project3.dao.ProductDetailDaoSqls.*;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_IMAGE_BY_PRODUCT_ID;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_DETAIL;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_TYPE;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
@@ -46,5 +49,12 @@ public class ProductDetailDao {
 		return jdbc.query(GET_PRODUCT_DETAIL, params, productMapper);
 	}
 	
+	/** 상품에 해당하는 이미지를 가져오는 쿼리, type에 따라 이미지를 분기별 이미지*/
+	public String getProductImageById(Integer id, String type) {
+		MapSqlParameterSource mSource = new MapSqlParameterSource();
+		mSource.addValue("productId", id);
+		mSource.addValue("type", type);
+		return jdbc.queryForObject(GET_IMAGE_BY_PRODUCT_ID, mSource, String.class);
+	}
 	
 }

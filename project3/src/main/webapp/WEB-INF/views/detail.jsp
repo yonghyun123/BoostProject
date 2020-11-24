@@ -190,7 +190,7 @@
 	<div id="photoviwer"></div>
 
 	<script type="rv-template" id="itemInfo-list">
-	<li class="item add_duration" style="width: 414px;"> <img alt="" class="img_thumb" src="/project4/products/detailImage/{imageId}"> <span class="img_bg"></span>
+	<li class="item add_duration" style="width: 414px;"> <img alt="" class="img_thumb" src="/project3/products/detailImage/{imageId}"> <span class="img_bg"></span>
 		<div class="visual_txt">
 			<div class="visual_txt_inn">
 				<h2 class="visual_txt_tit"> <span>{description}</span> </h2>

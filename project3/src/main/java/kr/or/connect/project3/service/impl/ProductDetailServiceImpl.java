@@ -31,5 +31,12 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		return imageTypeList;
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public String getProductImageById(Integer imageId, String type) {
+		String imageName = productDetailDao.getProductImageById(imageId, type);
+		return imageName;
+	
+	}
 	
 }

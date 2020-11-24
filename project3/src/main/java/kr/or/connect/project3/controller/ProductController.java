@@ -1,7 +1,6 @@
 package kr.or.connect.project3.controller;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,5 +77,7 @@ public class ProductController {
 		Resource resource = new ServletContextResource(servletContext, fullPath);
 	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 	}
+	
+
 	
 }
