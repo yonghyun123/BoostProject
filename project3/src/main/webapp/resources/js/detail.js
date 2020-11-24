@@ -9,6 +9,7 @@ function init() {
 	var imageTypeUrl = "/project3/products/detail/" + productId;
 	
 	detailImageAjax(imageTypeUrl);
+	openClose(); //접기 펼치기 기능
 }
 
 //get promotion image, content, description
@@ -169,5 +170,44 @@ function imageSlider(){
 			document.querySelector('.visual_img').appendChild(copyCenter);
 
 		});
+	}
+}
+
+//image가 바뀔때마다 이미지 번호를 보여주기 위한 함수
+function flipFunc() {
+	var curCnt = document.getElementById('cur-img');
+	if (curCnt.innerText != 1) {
+		curCnt.innerText = 1;
+	} else if (curCnt.innerText != 2) {
+		curCnt.innerText = 2;
+	}
+}
+
+
+//펼쳐보기 기능 
+function openClose() {
+	var bkMoreOpen = document.querySelector('#open');
+	if (bkMoreOpen.classList.contains('_open')) {
+		bkMoreOpen.addEventListener('click', function(e) {
+			var detailEl = document.querySelector('.store_details');
+			detailEl.classList.remove('close3');
+			bkMoreOpen.style.display = 'none';
+
+			var closeEl = document.querySelector('#close');
+			closeEl.style.display = 'block';
+
+		});
+	}
+
+	var bkMoreClose = document.querySelector('#close');
+	if (bkMoreClose.classList.contains('_close')) {
+		bkMoreClose.addEventListener('click', function(e) {
+			var detailEl = document.querySelector('.store_details');
+			detailEl.classList.add('close3');
+			bkMoreClose.style.display = 'none';
+
+			var openEl = document.querySelector('#open');
+			openEl.style.display = 'block';
+		})
 	}
 }
