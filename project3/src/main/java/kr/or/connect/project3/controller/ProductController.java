@@ -52,6 +52,7 @@ public class ProductController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("items", productList);
 		
+		
 		return map;	
 	}
 	

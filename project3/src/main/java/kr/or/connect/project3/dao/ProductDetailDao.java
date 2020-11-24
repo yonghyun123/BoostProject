@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.project3.dto.DisplayType;
+import kr.or.connect.project3.dto.ProductType;
 
 
 @Repository
@@ -22,6 +23,7 @@ public class ProductDetailDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<DisplayType> rowMapper = BeanPropertyRowMapper.newInstance(DisplayType.class);
+	private RowMapper<ProductType> productMapper = BeanPropertyRowMapper.newInstance(ProductType.class);
 	
 	public ProductDetailDao(DataSource dataSource){
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
@@ -35,6 +37,13 @@ public class ProductDetailDao {
 		params.put("productId", id);
 		params.put("displayId", displayId);
 		return jdbc.query(GET_PRODUCT_TYPE, params, rowMapper);
+	}
+	
+	/** 이미지 타입과 이미지, decription, content를 가져오는 쿼리 */
+	public List<ProductType> getProductDetail(int id){
+		Map<String, Integer> params = new HashMap<>();
+		params.put("productId", id);
+		return jdbc.query(GET_PRODUCT_DETAIL, params, productMapper);
 	}
 	
 	
