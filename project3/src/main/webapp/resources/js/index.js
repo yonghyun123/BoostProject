@@ -83,10 +83,11 @@ function makeTabList(json, flag) {
 	var cnt = 0
 
 	for (key in json.items) {
-		resultHtml = html.replace(/{id}/gi, json.items[key].id).replace(
-				'{description}', json.items[key].description).replace(
-				'{content}', json.items[key].content).replace('{placeName}',
-				json.items[key].placeName);
+		resultHtml = html.replace(/{id}/gi, json.items[key].id)
+						 .replace('{description}', json.items[key].description)
+						 .replace('{content}', json.items[key].content)
+						 .replace('{placeName}',json.items[key].placeName)
+						 .replace('{displayId}',json.items[key].displayId);
 		if (cnt % 2 == 0) {
 			addedHtmlLeft += resultHtml;
 		} else {

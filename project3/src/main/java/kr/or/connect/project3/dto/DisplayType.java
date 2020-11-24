@@ -7,12 +7,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Promotion {
-	private int id;
+public class DisplayType {
 	private int productId;
-	private int categoryId;
-	private String categoryName;
 	private String description;
-	private int productImageId;
-	
+	private String content;
+	private int displayId;
 }

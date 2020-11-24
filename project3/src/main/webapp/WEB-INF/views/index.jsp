@@ -119,7 +119,7 @@
 	<!--"{description}" -->
 	<script type="rv-template" id="itemList">
         <li class="item">
-            <a href="#" class="item_book">
+            <a href="detail/{id}?displayId={displayId}" class="item_book">
                 <div class="item_preview">
                     <img alt='input_image' class="img_thumb" src="/project3/products/productImages/{id}?type=th">
                     <span class="img_border"></span>
