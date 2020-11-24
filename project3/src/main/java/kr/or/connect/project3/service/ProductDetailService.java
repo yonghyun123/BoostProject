@@ -11,4 +11,5 @@ public interface ProductDetailService {
 	public List<ProductType> getProductDetail(int id);
 	public String getProductImageById(Integer imageId, String type);
 	public List<DisplayInfo> getLocationInfoById(int displayId);
+	public String getMapImageById(int displayId);
 }

@@ -66,4 +66,11 @@ public class ProductDetailDao {
 		return jdbc.query(GET_DISPLAY_DETAIL, params, displayMapper);
 	}
 	
+	/** 오시는 길을 클릭했을시 상품 약도파일을 가져오는 쿼리*/
+	public String getMapImage(int displayId){
+		MapSqlParameterSource mSource = new MapSqlParameterSource();
+		mSource.addValue("displayId", displayId);
+		return jdbc.queryForObject(GET_MAP_IMAGE_BY_ID, mSource, String.class);
+	}
+	
 }

@@ -47,4 +47,11 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		return list;
 	}
 	
+	@Override
+	@Transactional(readOnly=true)
+	public String getMapImageById(int displayId) {
+		String imageName = productDetailDao.getMapImage(displayId);
+		return imageName;
+	}
+	
 }

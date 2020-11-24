@@ -93,4 +93,18 @@ public class ProductDetailController {
 		locationMap.put("locationInfo", locationInfo);
 		return locationMap;
 	}
+	
+	/*해당 상품에 오시는 길을 선택했을시 map 이미지를 보여주기 위한 컨트롤러 */
+	@GetMapping(value = "/products/mapImage/{displayId}")
+	@ResponseBody
+	public ResponseEntity<Resource> getMapImage( @PathVariable(name="displayId") int displayId){
+		
+		String imageName = productDetailService.getMapImageById(displayId);
+		String fullPath = imageMapPath+imageName;
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_PNG);
+		Resource resource = new ServletContextResource(servletContext, fullPath);
+	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
 }
