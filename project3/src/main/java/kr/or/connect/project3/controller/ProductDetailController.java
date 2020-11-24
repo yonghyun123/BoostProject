@@ -27,6 +27,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.or.connect.project3.dto.DisplayInfo;
 import kr.or.connect.project3.dto.DisplayType;
 import kr.or.connect.project3.dto.ProductType;
+import kr.or.connect.project3.dto.ReviewInfo;
 import kr.or.connect.project3.service.ProductDetailService;
 import kr.or.connect.project3.util.Util;
 
@@ -107,4 +108,15 @@ public class ProductDetailController {
 		Resource resource = new ServletContextResource(servletContext, fullPath);
 	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 	}
+	
+	/* 해당 상품 리뷰를 보여주기 위한 컨트롤러 */
+	@GetMapping("/products/detail/review/{id}")
+	@ResponseBody
+	public Map<String, Object> getReviewById(@PathVariable(name="id") int id){
+		List<ReviewInfo> reviewList = productDetailService.getReview(id);
+		Map<String, Object> reviewMap = new HashMap<>();
+		reviewMap.put("reviewInfo", reviewList);
+		return reviewMap;
+	}
+
 }

@@ -1,8 +1,11 @@
 package kr.or.connect.project3.dao;
 
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_DISPLAY_DETAIL;
 import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_IMAGE_BY_PRODUCT_ID;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_MAP_IMAGE_BY_ID;
 import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_DETAIL;
-import static kr.or.connect.project3.dao.ProductDetailDaoSqls.*;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_TYPE;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_REVIEW;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +23,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.connect.project3.dto.DisplayInfo;
 import kr.or.connect.project3.dto.DisplayType;
 import kr.or.connect.project3.dto.ProductType;
+import kr.or.connect.project3.dto.ReviewInfo;
 
 
 @Repository
@@ -29,6 +33,7 @@ public class ProductDetailDao {
 	private RowMapper<DisplayType> rowMapper = BeanPropertyRowMapper.newInstance(DisplayType.class);
 	private RowMapper<ProductType> productMapper = BeanPropertyRowMapper.newInstance(ProductType.class);
 	private RowMapper<DisplayInfo> displayMapper = BeanPropertyRowMapper.newInstance(DisplayInfo.class);
+	private RowMapper<ReviewInfo> reviewMapper = BeanPropertyRowMapper.newInstance(ReviewInfo.class);
 	
 	public ProductDetailDao(DataSource dataSource){
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
@@ -73,4 +78,10 @@ public class ProductDetailDao {
 		return jdbc.queryForObject(GET_MAP_IMAGE_BY_ID, mSource, String.class);
 	}
 	
+	/** 각 상품에 대한 리뷰를 가져오는 쿼리 */
+	public List<ReviewInfo> getReview(int id){
+		Map<String, Integer> params = new HashMap<>();
+		params.put("productId", id);
+		return jdbc.query(GET_REVIEW, params, reviewMapper);
+	}
 }

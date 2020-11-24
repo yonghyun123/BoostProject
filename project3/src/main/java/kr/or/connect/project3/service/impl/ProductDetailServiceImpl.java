@@ -10,6 +10,7 @@ import kr.or.connect.project3.dao.ProductDetailDao;
 import kr.or.connect.project3.dto.DisplayInfo;
 import kr.or.connect.project3.dto.DisplayType;
 import kr.or.connect.project3.dto.ProductType;
+import kr.or.connect.project3.dto.ReviewInfo;
 import kr.or.connect.project3.service.ProductDetailService;
 
 @Service
@@ -53,5 +54,13 @@ public class ProductDetailServiceImpl implements ProductDetailService{
 		String imageName = productDetailDao.getMapImage(displayId);
 		return imageName;
 	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<ReviewInfo> getReview(int id) {
+		List<ReviewInfo> list = productDetailDao.getReview(id);
+		return list;
+	}
+
 	
 }

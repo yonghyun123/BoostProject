@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function init() {
 	var productId = document.querySelector("#productId").value;
 	var imageTypeUrl = "/project3/products/detail/" + productId;
+	var reviewUrl = "/project3/products/detail/review/" + productId;
 	
 	detailImageAjax(imageTypeUrl);
 	openClose(); //접기 펼치기 기능
 	DetailTab.registerEvents(); //객체리터럴을 이용한 TabUI 구현 
+	reviewAjax(reviewUrl); //detail 페이지에서 리뷰를 가져오기 위한 ajax
 }
 
 //get promotion image, content, description
@@ -211,4 +213,31 @@ function openClose() {
 			openEl.style.display = 'block';
 		})
 	}
+}
+
+/** 해당 항목 review를 가져오기 위한 Ajax */
+function reviewAjax(url){
+	var xhr = new XMLHttpRequest();
+	xhr.addEventListener("load", function() {
+		var reviewData = JSON.parse(xhr.responseText);
+		// making function
+		makeReview(reviewData);
+	});
+	xhr.open("GET", url);
+	xhr.send();
+}
+
+//해당 상품에 대한 리뷰를 html handlebar를 이용해 바인딩
+function makeReview(reviewJson){
+	var reviewHtml = document.querySelector('#review-item').innerHTML;
+	var bindTemplate = Handlebars.compile(reviewHtml);
+	var explainHtml = document.querySelector('.list_short_review');
+	var newHtml = '';
+
+	reviewJson['reviewInfo'].forEach(function(v){
+		v.score = Number(v.score).toFixed(1);
+		newHtml += bindTemplate(v);
+	})
+
+	explainHtml.innerHTML = newHtml;
 }
