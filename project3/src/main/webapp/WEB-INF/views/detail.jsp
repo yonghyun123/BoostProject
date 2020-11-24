@@ -134,7 +134,7 @@
 								이용자가 남긴 평가입니다.</span>
 						</p>
 					</div>
-					<a class="btn_review_more" href="/project4/review/${productId}"> <span>예매자
+					<a class="btn_review_more" href="/project3/review/${productId}"> <span>예매자
 							한줄평 더보기</span> <i class="fn fn-forward1"></i>
 					</a>
 				</div>
@@ -210,7 +210,7 @@
 	<script type="rv-template" id="path-item">
 		<div class="box_store_info">
 			<a class="store_location" title="지도웹으로 연결">
-				<img class="store_map img_thumb" alt="map" src="/project4/products/mapImage/{{id}}">
+				<img class="store_map img_thumb" alt="map" src="/project3/products/mapImage/{{id}}">
 				<span class="img_border"></span>
 				<span class="btn_map"><i class="spr_book2 ico_mapview"></i></span>
 			</a>

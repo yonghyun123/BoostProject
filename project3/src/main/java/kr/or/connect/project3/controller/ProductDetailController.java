@@ -24,6 +24,7 @@ import org.springframework.web.context.support.ServletContextResource;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import kr.or.connect.project3.dto.DisplayInfo;
 import kr.or.connect.project3.dto.DisplayType;
 import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.service.ProductDetailService;
@@ -81,5 +82,15 @@ public class ProductDetailController {
 		headers.setContentType(MediaType.IMAGE_PNG);
 		Resource resource = new ServletContextResource(servletContext, fullPath);
 	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
+	
+	/* 상품에 대한 오시는 길(장소, 전화번호, 위치)에 대한 데이터를 응답하는 컨트롤러 */
+	@GetMapping("/products/detail/locationInfo/{id}")
+	@ResponseBody
+	public Map<String, Object> getLocation(@PathVariable(name="id") int displayId){
+		List<DisplayInfo> locationInfo = productDetailService.getLocationInfoById(displayId);
+		Map<String, Object> locationMap = new HashMap<>();
+		locationMap.put("locationInfo", locationInfo);
+		return locationMap;
 	}
 }

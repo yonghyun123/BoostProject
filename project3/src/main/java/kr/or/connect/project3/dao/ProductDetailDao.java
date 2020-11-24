@@ -2,7 +2,7 @@ package kr.or.connect.project3.dao;
 
 import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_IMAGE_BY_PRODUCT_ID;
 import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_DETAIL;
-import static kr.or.connect.project3.dao.ProductDetailDaoSqls.GET_PRODUCT_TYPE;
+import static kr.or.connect.project3.dao.ProductDetailDaoSqls.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import kr.or.connect.project3.dto.DisplayInfo;
 import kr.or.connect.project3.dto.DisplayType;
 import kr.or.connect.project3.dto.ProductType;
 
@@ -27,6 +28,7 @@ public class ProductDetailDao {
 	private SimpleJdbcInsert insertAction;
 	private RowMapper<DisplayType> rowMapper = BeanPropertyRowMapper.newInstance(DisplayType.class);
 	private RowMapper<ProductType> productMapper = BeanPropertyRowMapper.newInstance(ProductType.class);
+	private RowMapper<DisplayInfo> displayMapper = BeanPropertyRowMapper.newInstance(DisplayInfo.class);
 	
 	public ProductDetailDao(DataSource dataSource){
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
@@ -55,6 +57,13 @@ public class ProductDetailDao {
 		mSource.addValue("productId", id);
 		mSource.addValue("type", type);
 		return jdbc.queryForObject(GET_IMAGE_BY_PRODUCT_ID, mSource, String.class);
+	}
+	
+	/** 오시는길에 대한 상세데이터(위치, 전화번호, 장소)등을 select하는 쿼리*/
+	public List<DisplayInfo> getLocationInfoById(int displayId){
+		Map<String, Integer> params = new HashMap<>();
+		params.put("displayId", displayId);
+		return jdbc.query(GET_DISPLAY_DETAIL, params, displayMapper);
 	}
 	
 }

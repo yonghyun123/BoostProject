@@ -10,6 +10,7 @@ function init() {
 	
 	detailImageAjax(imageTypeUrl);
 	openClose(); //접기 펼치기 기능
+	DetailTab.registerEvents(); //객체리터럴을 이용한 TabUI 구현 
 }
 
 //get promotion image, content, description
