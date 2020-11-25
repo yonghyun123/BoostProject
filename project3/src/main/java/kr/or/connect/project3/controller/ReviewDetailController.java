@@ -39,9 +39,23 @@ public class ReviewDetailController {
 			
 		}
 		
+		float scoreAvg = 0;
+		float scoreSum = 0;
+		
+		for(ReviewInfo review: reviewList){
+			scoreSum += review.getScore();
+		}
+		
+		if(reviewList.size() > 0){
+			scoreAvg = scoreSum / reviewList.size(); 
+		}
+		
+		String scoreAvgStr = String.format("%.1f", scoreAvg); //소숫점 한자리만 표현
+		
 		ObjectMapper mapper = new ObjectMapper();
 		model.addAttribute("reviewList", mapper.writeValueAsString(reviewList));
 		model.addAttribute("reviewJstl", reviewList);
+		model.addAttribute("scoreAvg",scoreAvgStr);
 		
 		return "review";
 	}

@@ -49,9 +49,9 @@
                     <div class="short_review_area">
                         <div class="grade_area">
                             <!-- [D] 별점 graph_value는 퍼센트 환산하여 width 값을 넣어줌 -->
-                            <span class="graph_mask"> <em class="graph_value" style="width: ${sum/idx * 20}%"></em></span> 
+                            <span class="graph_mask"> <em class="graph_value" style="width: ${scoreAvg * 20}%"></em></span> 
 								<strong class="text_value"> 
-									<span><fmt:formatNumber value="${sum/idx }" pattern=".0"></fmt:formatNumber></span> 
+									<span><fmt:formatNumber value="${scoreAvg }"></fmt:formatNumber></span> 
 									<em class="total">5.0</em>
 								</strong> <span class="join_count"><em class="green">${idx}</em>건 등록</span>
                         </div>
