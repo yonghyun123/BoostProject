@@ -112,9 +112,10 @@
 					</div>
 				</div>
 				<div class="section_btn">
-					<button type="button" class="bk_btn">
-						<i class="fn fn-nbooking-calender2"></i> <span>예매하기</span>
-					</button>
+                    <a class="bk_btn" style="line-height: 2.5;" href="/project3/reserve/${detailList[0].displayId}"> 
+                        <i class="fn fn-nbooking-calender2"></i>
+                        <span>예매하기</span>
+					</a>
 				</div>
 	
 				<div class="section_review_list">
