@@ -72,12 +72,9 @@
 							<div class="count_control">
 								<!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
 								<div class="clearfix">
-									<a href="#"
-										class="btn_plus_minus spr_book2 ico_minus3 disabled"
-										title="빼기"> </a> <input type="tel"
-										class="count_control_input disabled" value="0" readonly
-										title="수량"> <a href="#"
-										class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
+									<a href="#" class="btn_plus_minus spr_book2 ico_minus3 disabled" title="빼기"> </a> 
+									<input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
+									 <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
 								</div>
 								<!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
 								<div class="individual_price">
@@ -85,19 +82,22 @@
 								</div>
 							</div>
 							<div class="qty_info_icon">
-								<strong class="product_amount"> <span>성인</span>
-								</strong> <strong class="product_price"> <span class="price">10,200</span>
+								<strong class="product_amount"> 
+									<span>성인</span>
+								</strong> 
+								<strong class="product_price"> 
+									<span class="price">10,200</span>
 									<span class="price_type">원</span>
-								</strong> <em class="product_dsc">10,200원 (15% 할인가)</em>
+								</strong> 
+								<em class="product_dsc">10,200원 (15% 할인가)</em>
 							</div>
 						</div>
 						<div class="qty">
 							<div class="count_control">
 								<div class="clearfix">
-									<a href="#" class="btn_plus_minus spr_book2 ico_minus3"
-										title="빼기"> </a> <input type="tel" class="count_control_input"
-										value="10" readonly title="수량"> <a href="#"
-										class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
+									<a href="#" class="btn_plus_minus spr_book2 ico_minus3"title="빼기"> </a> 
+									<input type="tel" class="count_control_input" value="10" readonly title="수량">
+									 <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
 								</div>
 								<div class="individual_price on_color">
 									<span class="total_price">68,000</span><span class="price_type">원</span>
@@ -278,6 +278,33 @@
 		<p class="dsc">
 			성인(만 19~64세) 5,000원 / 청소년(만 13~18세) 4,000원<br> 어린이(만 4~12세) 3,000원 / 20인 이상 단체 20% 할인<br> 국가유공자, 장애인, 65세 이상 4,000원
 		</p>
+	</script>
+	
+	<script type="rv-template" id="product_count_cal">
+	<div class="qty">
+    <div class="count_control">
+        <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
+        <div class="clearfix">
+            <a href="#" class="btn_plus_minus spr_book2 ico_minus3 disabled" title="빼기"> </a> 
+            <input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
+             <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
+        </div>
+        <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
+        <div class="individual_price">
+            <span class="total_price">0</span><span class="price_type">원</span>
+        </div>
+    </div>
+    <div class="qty_info_icon">
+        <strong class="product_amount"> 
+            <span>성인</span>
+        </strong> 
+        <strong class="product_price"> 
+            <span class="price">10,200</span>
+            <span class="price_type">원</span>
+        </strong> 
+        <em class="product_dsc">10,200원 (15% 할인가)</em>
+    </div>
+	</div>
 	</script>
 
 
