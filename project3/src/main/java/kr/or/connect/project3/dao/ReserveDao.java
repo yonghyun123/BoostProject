@@ -11,9 +11,9 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
 import org.springframework.stereotype.Repository;
 
+import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.dto.ReservePage;
 
 
@@ -21,6 +21,7 @@ import kr.or.connect.project3.dto.ReservePage;
 public class ReserveDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<ReservePage> reservePageMapper = BeanPropertyRowMapper.newInstance(ReservePage.class);
+	private RowMapper<ProductType> ProductTypeMapper = BeanPropertyRowMapper.newInstance(ProductType.class);
 	
 	public ReserveDao(DataSource dataSource){
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
@@ -32,5 +33,11 @@ public class ReserveDao {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("displayId", id);
 		return jdbc.query(GET_RESERVE_PAGE, params, reservePageMapper);
+	}
+	
+	public ProductType getReserveImageById(int id){
+		Map<String, Integer> params = new HashMap<>();
+		params.put("displayId", id);
+		return jdbc.queryForObject(GET_RESERVE_PAGE, params, ProductTypeMapper);
 	}
 }

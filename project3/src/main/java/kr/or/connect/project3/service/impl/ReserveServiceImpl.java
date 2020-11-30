@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.project3.dao.ReserveDao;
+import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.dto.ReservePage;
 import kr.or.connect.project3.service.ReserveService;
 
@@ -22,6 +23,12 @@ public class ReserveServiceImpl implements ReserveService{
 	public List<ReservePage> getReservePage(int id) {
 		List<ReservePage> list = reserveDao.getReservePage(id);
 		return list;
+	}
+
+	@Override
+	public ProductType getReserveImageById(int id) {
+		ProductType reserveImage = reserveDao.getReserveImageById(id);
+		return reserveImage;
 	}
 
 }
