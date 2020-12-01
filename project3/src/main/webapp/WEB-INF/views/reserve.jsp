@@ -83,7 +83,7 @@
 						<div class="qty">
 							<div class="count_control">
 								<div class="clearfix">
-									<a href="#" class="btn_plus_minus spr_book2 ico_minus3" id="A_minus"title="빼기"> </a> 
+									<a href="#" class="btn_plus_minus spr_book2 ico_minus3" title="빼기"> </a> 
 									<input type="tel" class="count_control_input" value="10" readonly title="수량">
 									 <a href="#" class="btn_plus_minus spr_book2 ico_plus3" id="A_plus"title="더하기"> </a>
 								</div>
@@ -273,9 +273,9 @@
     <div class="count_control">
         <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
         <div class="clearfix">
-            <a href="#" class="btn_plus_minus spr_book2 ico_minus3 disabled" title="빼기"> </a> 
+            <a class="btn_plus_minus spr_book2 ico_minus3 disabled" id="{{price_type}}_minus" title="빼기"> </a> 
             <input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
-             <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
+             <a class="btn_plus_minus spr_book2 ico_plus3" id="{{price_type}}_plus" title="더하기"> </a>
         </div>
         <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
         <div class="individual_price">
@@ -287,10 +287,10 @@
             <span>성인</span>
         </strong> 
         <strong class="product_price"> 
-            <span class="price">10,200</span>
+            <span class="price">{{price}}</span>
             <span class="price_type">원</span>
         </strong> 
-        <em class="product_dsc">10,200원 (15% 할인가)</em>
+        <em class="product_dsc">{{price}}원 (15% 할인가)</em>
     </div>
 	</div>
 	</script>

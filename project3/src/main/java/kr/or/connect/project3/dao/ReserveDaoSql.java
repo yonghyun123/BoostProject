@@ -13,4 +13,8 @@ public class ReserveDaoSql {
 			+ "FROM product_image T1, file_info T2 "
 			+ "WHERE T1.file_id = t2.id "
 			+ "AND T1.id = :imageId ";
+	
+	public static final String GET_PRICE_INFO = "SELECT T1.product_id productId, T1.product_id productId, T1.price_type_name priceTypeName, T1.price price, T1.discount_rate discountRate "
+			+ "FROM product_price T1 "
+			+ "WHERE T1.product_id = :productId ";
 }

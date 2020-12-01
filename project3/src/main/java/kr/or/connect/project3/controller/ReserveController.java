@@ -22,6 +22,7 @@ import org.springframework.web.context.support.ServletContextResource;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import kr.or.connect.project3.dto.PriceInfo;
 import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.dto.ReservePage;
 import kr.or.connect.project3.service.ReserveService;
@@ -67,6 +68,17 @@ public class ReserveController {
 		headers.setContentType(MediaType.IMAGE_PNG);
 		Resource resource = new ServletContextResource(servletContext, fullPath);
 	    return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+	}
+	
+	/* productId를 이용해 price type, price 정보를 응답하기 위한 컨트롤러 */
+	@GetMapping("/reserve/priceInfo/{id}")
+	@ResponseBody
+	public Map<String, Object> getPriceInfo(@PathVariable(name="id") int productId){
+		System.out.println("in getPriceInfo");
+		List<PriceInfo> priceInfoList = reserveService.getPriceInfo(productId);
+		Map<String, Object> imageTypeMap = new HashMap<>();
+		imageTypeMap.put("priceInforList", priceInfoList);
+		return imageTypeMap;
 	}
 }
 

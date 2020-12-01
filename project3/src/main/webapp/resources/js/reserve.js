@@ -17,7 +17,9 @@ function init() {
     });
     var productId = document.querySelector('#productId').value;
     var imageTypeUrl = "/project3/products/reserve/" + productId;
-    detailImageAjax(imageTypeUrl)
+    var priceInfoUrl = "/project3/reserve/priceInfo" + productId;
+    detailImageAjax(imageTypeUrl);
+    reservePriceInfo(priceInfoUrl);
 }
 
 
@@ -35,6 +37,26 @@ function detailImageAjax(url) {
 				console.log(pmJson);
 				makeImage(pmJson);  
 				
+				
+			} else {
+				console.log('[' + xhr.status + ']: ' + xhr.statusText);
+			}
+		}
+	}
+}
+
+//get price, price type of product as product id
+function reservePriceInfo(url){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.send();
+	var pmJson = null;
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			if (xhr.status === 200) {
+				pmJson = JSON.parse(xhr.responseText);
+				console.log(pmJson);  
 				
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
