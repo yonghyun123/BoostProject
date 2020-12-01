@@ -26,9 +26,17 @@ public class ReserveServiceImpl implements ReserveService{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public ProductType getReserveImageById(int id) {
 		ProductType reserveImage = reserveDao.getReserveImageById(id);
 		return reserveImage;
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public String getProductReserveImageById(int imageId) {
+		String imageName = reserveDao.getProductReserveImageById(imageId);
+		return imageName;
 	}
 
 }

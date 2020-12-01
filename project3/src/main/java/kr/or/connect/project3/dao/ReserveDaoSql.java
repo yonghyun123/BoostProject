@@ -7,5 +7,10 @@ public class ReserveDaoSql {
 	
 	public static final String GET_RESERVE_IMAGE = "SELECT p.id id, description, content, pi.id image_id, pi.type type, pi.file_id file_id "
 			+ "FROM product p, product_image pi "
-			+ "WHERE p.id = :productId and pi.product_id = :productId and pi.type='ma' ";	
+			+ "WHERE p.id = :productId and pi.product_id = :productId and pi.type='ma' ";
+	
+	public static final String GET_RESERVE_IMAGE_BY_PRODUCT_ID = "SELECT file_name "
+			+ "FROM product_image T1, file_info T2 "
+			+ "WHERE T1.file_id = t2.id "
+			+ "AND T1.id = :imageId ";
 }

@@ -42,20 +42,7 @@
 					</h2>
 				</div>
 				<div class="group_visual">
-					<div class="container_visual" style="width: 414px;">
-						<ul class="visual_img">
-							<li class="item" style="width: 414px;"><img alt=""
-								class="img_thumb"
-								src="https://ssl.phinf.net/naverbooking/20170217_264/1487312141947lTddT_JPEG/%B3%D7%C0%CC%B9%F6.jpg?type=ff1242_816">
-								<span class="img_bg"></span>
-								<div class="preview_txt">
-									<h2 class="preview_txt_tit"></h2>
-									<em class="preview_txt_dsc">₩12,000 ~ </em><em
-										class="preview_txt_dsc">2017.2.17.(금)~2017.4.18.(화), 잔여티켓
-										2769매</em>
-								</div></li>
-						</ul>
-					</div>
+					<!-- insert thumb image -->
 				</div>
 				<div class="section_store_details">
 					<div class="store_details">
@@ -96,9 +83,9 @@
 						<div class="qty">
 							<div class="count_control">
 								<div class="clearfix">
-									<a href="#" class="btn_plus_minus spr_book2 ico_minus3"title="빼기"> </a> 
+									<a href="#" class="btn_plus_minus spr_book2 ico_minus3" id="A_minus"title="빼기"> </a> 
 									<input type="tel" class="count_control_input" value="10" readonly title="수량">
-									 <a href="#" class="btn_plus_minus spr_book2 ico_plus3" title="더하기"> </a>
+									 <a href="#" class="btn_plus_minus spr_book2 ico_plus3" id="A_plus"title="더하기"> </a>
 								</div>
 								<div class="individual_price on_color">
 									<span class="total_price">68,000</span><span class="price_type">원</span>
@@ -305,6 +292,22 @@
         </strong> 
         <em class="product_dsc">10,200원 (15% 할인가)</em>
     </div>
+	</div>
+	</script>
+	
+	<script type="rv-template" id="reserve_image">
+	<div class="container_visual" style="width: 414px;">
+	<ul class="visual_img">
+		<li class="item" style="width: 414px;">
+		<img alt="" class="img_thumb" src="/project3/products/reserveImage/{{imageId}}">
+			<span class="img_bg"></span>
+			<div class="preview_txt">
+				<h2 class="preview_txt_tit"></h2>
+				<em class="preview_txt_dsc">₩12,000 ~ </em>
+				<em class="preview_txt_dsc">2017.2.17.(금)~2017.4.18.(화), 잔여티켓 2769매</em>
+			</div>
+		</li>
+	</ul>
 	</div>
 	</script>
 	<script src="<c:url value="/resources/js/handlebars.min.js"/>"></script>

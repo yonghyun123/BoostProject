@@ -1,6 +1,6 @@
 package kr.or.connect.project3.dao;
 
-import static kr.or.connect.project3.dao.ReserveDaoSql.GET_RESERVE_PAGE;
+import static kr.or.connect.project3.dao.ReserveDaoSql.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +38,14 @@ public class ReserveDao {
 	
 	public ProductType getReserveImageById(int id){
 		Map<String, Integer> params = new HashMap<>();
-		params.put("displayId", id);
-		return jdbc.queryForObject(GET_RESERVE_PAGE, params, ProductTypeMapper);
+		params.put("productId", id);
+		return jdbc.queryForObject(GET_RESERVE_IMAGE, params, ProductTypeMapper);
+	}
+	
+	/** 상품에 해당하는 이미지를 가져오는 쿼리 */
+	public String getProductReserveImageById(Integer imageId) {
+		MapSqlParameterSource mSource = new MapSqlParameterSource();
+		mSource.addValue("imageId", imageId);
+		return jdbc.queryForObject(GET_RESERVE_IMAGE_BY_PRODUCT_ID, mSource, String.class);
 	}
 }

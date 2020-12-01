@@ -17,6 +17,7 @@ function init() {
     });
     var productId = document.querySelector('#productId').value;
     var imageTypeUrl = "/project3/products/reserve/" + productId;
+    detailImageAjax(imageTypeUrl)
 }
 
 
@@ -31,7 +32,9 @@ function detailImageAjax(url) {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
 				pmJson = JSON.parse(xhr.responseText);
+				console.log(pmJson);
 				makeImage(pmJson);  
+				
 				
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
@@ -41,5 +44,9 @@ function detailImageAjax(url) {
 }
 
 function makeImage(json){
-	
+	var introHtml = document.querySelector('#reserve_image').innerText;
+	console.log(introHtml);
+	bindTemplate = Handlebars.compile(introHtml);
+
+	document.querySelector('.group_visual').innerHTML = bindTemplate(json['imageTypeList']);	
 }

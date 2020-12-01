@@ -8,4 +8,5 @@ import kr.or.connect.project3.dto.ReservePage;
 public interface ReserveService {
 	public List<ReservePage> getReservePage(int id);
 	public ProductType getReserveImageById(int id);
+	public String getProductReserveImageById(int imageId);
 }
