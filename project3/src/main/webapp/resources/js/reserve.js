@@ -6,18 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function init() {
 	
-    var temp = document.querySelector('#A_plus');
-    temp.addEventListener('click',function(evt){
-        this.previousSibling.previousSibling.value++;
-    });
-
-    var temp = document.querySelector('#A_minus');
-    temp.addEventListener('click',function(evt){
-        this.nextSibling.nextSibling.value--;
-    });
+//    var temp = document.querySelector('#A_plus');
+//    temp.addEventListener('click',function(evt){
+//        this.previousSibling.previousSibling.value++;
+//    });
+//
+//    var temp = document.querySelector('#A_minus');
+//    temp.addEventListener('click',function(evt){
+//        this.nextSibling.nextSibling.value--;
+//    });
     var productId = document.querySelector('#productId').value;
     var imageTypeUrl = "/project3/products/reserve/" + productId;
-    var priceInfoUrl = "/project3/reserve/priceInfo" + productId;
+    var priceInfoUrl = "/project3/reserve/priceInfo/" + productId;
     detailImageAjax(imageTypeUrl);
     reservePriceInfo(priceInfoUrl);
 }
@@ -56,7 +56,8 @@ function reservePriceInfo(url){
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
 				pmJson = JSON.parse(xhr.responseText);
-				console.log(pmJson);  
+				console.log(pmJson);
+				bindPriceInfo(pmJson);
 				
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
@@ -65,10 +66,17 @@ function reservePriceInfo(url){
 	}
 }
 
+// bind html price information into javascript
+function bindPriceInfo(json){
+	var introHtml = document.querySelector('#product_count_cal').innerText;
+	console.log(introHtml);
+	bindTemplate = Handlebars.compile(introHtml)
+	document.querySelector('.ticket_body').innerHTML = bindTemplate(json['priceInforList'][1]);	
+}
+
 function makeImage(json){
 	var introHtml = document.querySelector('#reserve_image').innerText;
 	console.log(introHtml);
-	bindTemplate = Handlebars.compile(introHtml);
-
+	bindTemplate = Handlebars.compile(introHtml)
 	document.querySelector('.group_visual').innerHTML = bindTemplate(json['imageTypeList']);	
 }

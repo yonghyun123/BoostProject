@@ -290,7 +290,7 @@
             <span class="price">{{price}}</span>
             <span class="price_type">원</span>
         </strong> 
-        <em class="product_dsc">{{price}}원 (15% 할인가)</em>
+        <em class="product_dsc">{{price}}원 ({{discountRate}}% 할인가)</em>
     </div>
 	</div>
 	</script>
