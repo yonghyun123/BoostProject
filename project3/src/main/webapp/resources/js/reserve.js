@@ -5,22 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function init() {
-	
-//    var temp = document.querySelector('#A_plus');
-//    temp.addEventListener('click',function(evt){
-//        this.previousSibling.previousSibling.value++;
-//    });
-//
-//    var temp = document.querySelector('#A_minus');
-//    temp.addEventListener('click',function(evt){
-//        this.nextSibling.nextSibling.value--;
-//    });
+
     var productId = document.querySelector('#productId').value;
     var imageTypeUrl = "/project3/products/reserve/" + productId;
     var priceInfoUrl = "/project3/reserve/priceInfo/" + productId;
     detailImageAjax(imageTypeUrl);
     reservePriceInfo(priceInfoUrl);
+    
 }
+
+
+
 
 
 //get promotion image, content, description
@@ -58,7 +53,7 @@ function reservePriceInfo(url){
 				pmJson = JSON.parse(xhr.responseText);
 				console.log(pmJson);
 				bindPriceInfo(pmJson);
-				
+				controlCountProduct();
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
 			}
@@ -84,4 +79,25 @@ function makeImage(json){
 	console.log(introHtml);
 	bindTemplate = Handlebars.compile(introHtml)
 	document.querySelector('.group_visual').innerHTML = bindTemplate(json['imageTypeList']);	
+}
+
+function controlCountProduct(){
+	var tempPlus = document.querySelector('#A_plus');
+	console.log(tempPlus);
+	tempPlus.addEventListener('click',function(evt){
+		console.log(tempPlus);
+		this.previousSibling.previousSibling.value++;
+	});
+	
+	var tempMinus = document.querySelector('#A_minus');
+	console.log(tempMinus);
+	tempMinus.addEventListener('click',function(evt){
+		console.log(tempMinus);
+		if(this.nextSibling.nextSibling.value > 0)
+		{
+			this.nextSibling.nextSibling.value--;
+		}
+		
+	});
+
 }
