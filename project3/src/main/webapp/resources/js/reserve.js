@@ -14,10 +14,6 @@ function init() {
     
 }
 
-
-
-
-
 //get promotion image, content, description
 function detailImageAjax(url) {
 	var xhr = new XMLHttpRequest();
@@ -82,22 +78,37 @@ function makeImage(json){
 }
 
 function controlCountProduct(){
+	
 	var tempPlus = document.querySelector('#A_plus');
 	console.log(tempPlus);
 	tempPlus.addEventListener('click',function(evt){
-		console.log(tempPlus);
-		this.previousSibling.previousSibling.value++;
+		var countNum = this.previousSibling.previousSibling.value;
+		countNum++;
+		this.previousSibling.previousSibling.value = countNum;
+		if(countNum > 0)
+		{
+			var minusIcon = document.querySelector('.ico_minus3');
+			minusIcon.classList.remove('disabled');
+			var productCount = document.querySelector('.count_control_input');
+			productCount.classList.remove('disabled');
+		}
 	});
 	
 	var tempMinus = document.querySelector('#A_minus');
 	console.log(tempMinus);
 	tempMinus.addEventListener('click',function(evt){
-		console.log(tempMinus);
-		if(this.nextSibling.nextSibling.value > 0)
+		var countNum = this.nextSibling.nextSibling.value;
+		if(countNum > 0)
 		{
-			this.nextSibling.nextSibling.value--;
+			countNum--;
+			this.nextSibling.nextSibling.value = countNum;
+			if(countNum == 0){
+				var minusIcon = document.querySelector('.ico_minus3');
+				minusIcon.classList.add('disabled');
+				var productCount = document.querySelector('.count_control_input');
+				productCount.classList.add('disabled');
+				
+			}
 		}
-		
 	});
-
 }
