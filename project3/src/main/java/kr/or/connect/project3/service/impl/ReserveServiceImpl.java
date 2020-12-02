@@ -43,7 +43,17 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public List<PriceInfo> getPriceInfo(int productId) {
 		List<PriceInfo> list = reserveDao.getPriceInfo(productId);
-		System.out.println(list.get(0).toString());
+		for(PriceInfo item: list){
+			if("A".equals(item.getPriceTypeName())){
+				item.setTypeAge("성인");
+			} else if("Y".equals(item.getPriceTypeName())){
+				item.setTypeAge("청소년");
+			} else if("B".equals(item.getPriceTypeName())){
+				item.setTypeAge("유아");
+			} else{
+				item.setTypeAge("미취학");
+			}
+		}
 		return list;
 	
 	}

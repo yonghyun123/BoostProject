@@ -12,4 +12,5 @@ public class PriceInfo {
 	String priceTypeName;
 	String price;
 	String discountRate;
+	String typeAge;
 }

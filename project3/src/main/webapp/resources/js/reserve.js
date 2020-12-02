@@ -69,11 +69,16 @@ function reservePriceInfo(url){
 // bind html price information into javascript
 function bindPriceInfo(json){
 	var introHtml = document.querySelector('#product_count_cal').innerText;
-	console.log(introHtml);
-	bindTemplate = Handlebars.compile(introHtml)
-	document.querySelector('.ticket_body').innerHTML = bindTemplate(json['priceInforList'][1]);	
+	var bindTemplate = Handlebars.compile(introHtml)
+	var innerHtml = '';
+	
+	json['priceInforList'].forEach(function(v){
+		innerHtml += bindTemplate(v);
+	})
+	document.querySelector('.ticket_body').innerHTML = innerHtml;	
 }
 
+// visuailization of reserve page main image
 function makeImage(json){
 	var introHtml = document.querySelector('#reserve_image').innerText;
 	console.log(introHtml);
