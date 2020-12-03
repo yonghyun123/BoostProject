@@ -49,7 +49,9 @@ function reservePriceInfo(url){
 				pmJson = JSON.parse(xhr.responseText);
 				console.log(pmJson);
 				bindPriceInfo(pmJson);
-				controlCountProduct();
+				contorlCountProduct.calCulatorFuncTypeA();
+				contorlCountProduct.calCulatorFuncTypeB();
+				contorlCountProduct.calCulatorFuncTypeY();
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
 			}
@@ -77,38 +79,134 @@ function makeImage(json){
 	document.querySelector('.group_visual').innerHTML = bindTemplate(json['imageTypeList']);	
 }
 
-function controlCountProduct(){
-	
-	var tempPlus = document.querySelector('#A_plus');
-	console.log(tempPlus);
-	tempPlus.addEventListener('click',function(evt){
-		var countNum = this.previousSibling.previousSibling.value;
-		countNum++;
-		this.previousSibling.previousSibling.value = countNum;
-		if(countNum > 0)
-		{
-			var minusIcon = document.querySelector('.ico_minus3');
-			minusIcon.classList.remove('disabled');
-			var productCount = document.querySelector('.count_control_input');
-			productCount.classList.remove('disabled');
-		}
-	});
-	
-	var tempMinus = document.querySelector('#A_minus');
-	console.log(tempMinus);
-	tempMinus.addEventListener('click',function(evt){
-		var countNum = this.nextSibling.nextSibling.value;
-		if(countNum > 0)
-		{
-			countNum--;
-			this.nextSibling.nextSibling.value = countNum;
-			if(countNum == 0){
-				var minusIcon = document.querySelector('.ico_minus3');
-				minusIcon.classList.add('disabled');
-				var productCount = document.querySelector('.count_control_input');
-				productCount.classList.add('disabled');
+
+//using object literal javascript
+var contorlCountProduct = {
+		calCulatorFuncTypeA: function(){
+			var plusClikcObj =  document.querySelector('#A_plus')
+			plusClikcObj.addEventListener('click',function(evt){
+				var totalPrice = document.querySelector('#A_total_price').innerText;
+				var productPrice = document.querySelector('#A_price').innerText;
+				var resultPrice = Number(totalPrice) + Number(productPrice);
+				document.querySelector('#A_total_price').innerText = resultPrice;
 				
-			}
+				var countNum = this.previousSibling.previousSibling.value;
+				countNum++;
+				this.previousSibling.previousSibling.value = countNum;
+				if(countNum > 0)
+				{
+					var minusIcon = document.querySelector('#A_minus');
+					minusIcon.classList.remove('disabled');
+					var productCount = document.querySelector('#A_value');
+					productCount.classList.remove('disabled');
+				}
+			});
+			
+			var minusClickObj = document.querySelector('#A_minus');
+			minusClickObj.addEventListener('click',function(evt){
+				var countNum = this.nextSibling.nextSibling.value;
+				if(countNum > 0)
+				{
+					var totalPrice = document.querySelector('#A_total_price').innerText;
+					var productPrice = document.querySelector('#A_price').innerText;
+					var resultPrice = Number(totalPrice) - Number(productPrice);
+					document.querySelector('#A_total_price').innerText = resultPrice;
+					
+					countNum--;
+					this.nextSibling.nextSibling.value = countNum;
+					if(countNum == 0){
+						var minusIcon = document.querySelector('#A_minus');
+						minusIcon.classList.add('disabled');
+						var productCount = document.querySelector('#A_value');
+						productCount.classList.add('disabled');
+						
+					}
+				}
+			});
+		},
+		calCulatorFuncTypeB : function(){
+			var plusClikcObj =  document.querySelector('#B_plus')
+			plusClikcObj.addEventListener('click',function(evt){
+				var totalPrice = document.querySelector('#B_total_price').innerText;
+				var productPrice = document.querySelector('#B_price').innerText;
+				var resultPrice = Number(totalPrice) + Number(productPrice);
+				document.querySelector('#B_total_price').innerText = resultPrice;
+				
+				var countNum = this.previousSibling.previousSibling.value;
+				countNum++;
+				this.previousSibling.previousSibling.value = countNum;
+				if(countNum > 0)
+				{
+					var minusIcon = document.querySelector('#B_minus');
+					minusIcon.classList.remove('disabled');
+					var productCount = document.querySelector('#B_value');
+					productCount.classList.remove('disabled');
+				}
+			});
+			
+			var minusClickObj = document.querySelector('#B_minus');
+			minusClickObj.addEventListener('click',function(evt){
+				var countNum = this.nextSibling.nextSibling.value;
+				if(countNum > 0)
+				{
+					var totalPrice = document.querySelector('#B_total_price').innerText;
+					var productPrice = document.querySelector('#B_price').innerText;
+					var resultPrice = Number(totalPrice) - Number(productPrice);
+					document.querySelector('#B_total_price').innerText = resultPrice;
+					
+					countNum--;
+					this.nextSibling.nextSibling.value = countNum;
+					if(countNum == 0){
+						var minusIcon = document.querySelector('#B_minus');
+						minusIcon.classList.add('disabled');
+						var productCount = document.querySelector('#B_value');
+						productCount.classList.add('disabled');
+						
+					}
+				}
+			});
+		},
+		calCulatorFuncTypeY : function(){
+			var plusClikcObj =  document.querySelector('#Y_plus')
+			plusClikcObj.addEventListener('click',function(evt){
+				var totalPrice = document.querySelector('#Y_total_price').innerText;
+				var productPrice = document.querySelector('#Y_price').innerText;
+				var resultPrice = Number(totalPrice) + Number(productPrice);
+				document.querySelector('#Y_total_price').innerText = resultPrice;
+				
+				var countNum = this.previousSibling.previousSibling.value;
+				countNum++;
+				this.previousSibling.previousSibling.value = countNum;
+				if(countNum > 0)
+				{
+					var minusIcon = document.querySelector('#Y_minus');
+					minusIcon.classList.remove('disabled');
+					var productCount = document.querySelector('#Y_value');
+					productCount.classList.remove('disabled');
+				}
+			});
+			
+			var minusClickObj = document.querySelector('#Y_minus');
+			minusClickObj.addEventListener('click',function(evt){
+				var countNum = this.nextSibling.nextSibling.value;
+				if(countNum > 0)
+				{
+					var totalPrice = document.querySelector('#Y_total_price').innerText;
+					var productPrice = document.querySelector('#Y_price').innerText;
+					var resultPrice = Number(totalPrice) - Number(productPrice);
+					document.querySelector('#Y_total_price').innerText = resultPrice;
+					
+					countNum--;
+					this.nextSibling.nextSibling.value = countNum;
+					if(countNum == 0){
+						var minusIcon = document.querySelector('#Y_minus');
+						minusIcon.classList.add('disabled');
+						var productCount = document.querySelector('#Y_value');
+						productCount.classList.add('disabled');
+						
+					}
+				}
+			});
 		}
-	});
+
 }

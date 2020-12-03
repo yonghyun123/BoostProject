@@ -195,12 +195,13 @@
         <!-- [D] 수량이 최소 값이 일때 ico_minus3, count_control_input에 disabled 각각 추가, 수량이 최대 값일 때는 ico_plus3에 disabled 추가 -->
         <div class="clearfix">
             <div class="btn_plus_minus spr_book2 ico_minus3 disabled" id="{{priceTypeName}}_minus" title="빼기"> </div> 
-            <input type="tel" class="count_control_input disabled" value="0" readonly title="수량">
+            <input type="tel" class="count_control_input disabled" id="{{priceTypeName}}_value" value="0" readonly title="수량">
              <div class="btn_plus_minus spr_book2 ico_plus3" id="{{priceTypeName}}_plus" title="더하기"> </div>
         </div>
         <!-- [D] 금액이 0 이상이면 individual_price에 on_color 추가 -->
         <div class="individual_price">
-            <span class="total_price">0</span><span class="price_type">원</span>
+            <span class="total_price" id="{{priceTypeName}}_total_price">0</span>
+			<span class="price_type">원</span>
         </div>
     </div>
     <div class="qty_info_icon">
@@ -208,7 +209,7 @@
             <span>{{typeAge}}</span>
         </strong> 
         <strong class="product_price"> 
-            <span class="price">{{price}}</span>
+            <span class="price" id="{{priceTypeName}}_price">{{price}}</span>
             <span class="price_type">원</span>
         </strong> 
         <em class="product_dsc">{{price}}원 ({{discountRate}}% 할인가)</em>
