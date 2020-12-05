@@ -118,9 +118,10 @@
 						</div>
 						<!-- [D] 약관 보기 클릭 시 agreement에 open 클래스 추가 -->
 						<div class="agreement">
-							<span class="chk_txt_span"> <i
-								class="spr_book ico_arr_ipc2"></i> <span>개인정보 수집 및 이용 동의</span>
-							</span> <a href="#" class="btn_agreement"> <span class="btn_text">보기</span>
+							<span class="chk_txt_span"> <i class="spr_book ico_arr_ipc2"></i> <span>개인정보 수집 및 이용 동의</span>
+							</span>
+							 <a class="btn_agreement"> 
+							 	<span class="btn_text">보기</span>
 								<i class="fn fn-down2"></i>
 							</a>
 							<div class="useragreement_details">
@@ -140,7 +141,8 @@
 						<div class="agreement">
 							<span class="chk_txt_span"> <i
 								class="spr_book ico_arr_ipc2"></i> <span>개인정보 제3자 제공 동의</span>
-							</span> <a href="#" class="btn_agreement"> <span class="btn_text">보기</span>
+							</span>
+							 <a class="btn_agreement"> <span class="btn_text">보기</span>
 								<i class="fn fn-down2"></i>
 							</a>
 							<div class="useragreement_details custom_details_wrap">

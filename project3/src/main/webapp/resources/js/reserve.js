@@ -12,6 +12,7 @@ function init() {
     detailImageAjax(imageTypeUrl);
     reservePriceInfo(priceInfoUrl);
     postAction.postAjax();
+    btnMorePrivateInfo();
     
 }
 
@@ -152,8 +153,19 @@ function validationCheck(){
 	      alert("올바르지 않은 이메일입니다.");
 	      return;
     } 
+}
 
-        
+function btnMorePrivateInfo(){
+	let agrBtn = document.querySelector('.btn_agreement');
+	agrBtn.addEventListener('click',function(){
+		let moreInfo = document.querySelector('.useragreement_details');
+		if(moreInfo.classList.contains('open')){
+			moreInfo.classList.remove('open');
+		}else{
+			moreInfo.classList.add('open')
+		}
+	});
+	
 }
 
 //using object literal javascript
