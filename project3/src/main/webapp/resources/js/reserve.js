@@ -11,6 +11,7 @@ function init() {
     var priceInfoUrl = "/project3/reserve/priceInfo/" + productId;
     detailImageAjax(imageTypeUrl);
     reservePriceInfo(priceInfoUrl);
+    postAction.postAjax();
     
 }
 
@@ -18,6 +19,7 @@ function init() {
 function detailImageAjax(url) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
+	xhr.setRequestHeader("Content-type", "application/json");
 	xhr.send();
 	var pmJson = null;
 
@@ -52,6 +54,7 @@ function reservePriceInfo(url){
 				contorlCountProduct.calCulatorFuncTypeA();
 				contorlCountProduct.calCulatorFuncTypeB();
 				contorlCountProduct.calCulatorFuncTypeY();
+				contorlCountProduct.calculatorTotalCount();
 			} else {
 				console.log('[' + xhr.status + ']: ' + xhr.statusText);
 			}
@@ -79,12 +82,56 @@ function makeImage(json){
 	document.querySelector('.group_visual').innerHTML = bindTemplate(json['imageTypeList']);	
 }
 
+var postAction = {
+		postAjax: function(){
+			var submitBtn = document.querySelector('.bk_btn');
+			submitBtn.addEventListener('click',function(evt){
+				var xhr = new XMLHttpRequest();
+				var postUrl = "/project3/reserve/post"; 
+				xhr.open('POST', postUrl, true);
+				var pmJson = null;
+			
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+						} else {
+							console.log('[' + xhr.status + ']: ' + xhr.statusText);
+						}
+					}
+				}
+				var data = {
+						userName: document.querySelector('#name').value,
+						userTel: document.querySelector('#tel').value,
+						userEmail: document.querySelector('#email').value,
+						priceList : [
+							{
+								priceId : document.querySelector('#A_price_id').value,
+								count: document.querySelector('#A_value').value
+							},
+							{
+								priceId : document.querySelector('#B_price_id').value,
+								count: document.querySelector('#B_value').value
+							},
+							{
+								priceId : document.querySelector('#Y_price_id').value,
+								count: document.querySelector('#Y_value').value
+							}
+							
+						]
+				}
+				console.log(data);
+				console.log(JSON.stringify(data));
+//				xhr.send();
+			});
+		}
+}
 
 //using object literal javascript
 var contorlCountProduct = {
 		calCulatorFuncTypeA: function(){
 			var plusClikcObj =  document.querySelector('#A_plus')
 			plusClikcObj.addEventListener('click',function(evt){
+				
 				var totalPrice = document.querySelector('#A_total_price').innerText;
 				var productPrice = document.querySelector('#A_price').innerText;
 				var resultPrice = Number(totalPrice) + Number(productPrice);
@@ -207,6 +254,13 @@ var contorlCountProduct = {
 					}
 				}
 			});
+		},
+		calculatorTotalCount :  function(){
+			var totalCount = Number(document.querySelector('#A_value').value)+
+							 Number(document.querySelector('#B_value').value)+
+							 Number(document.querySelector('#Y_value').value);
+			console.log(totalCount);
+			document.querySelector('#totalCount').innerText = totalCount;
 		}
 
 }
