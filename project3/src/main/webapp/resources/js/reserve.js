@@ -86,6 +86,7 @@ var postAction = {
 		postAjax: function(){
 			var submitBtn = document.querySelector('.bk_btn');
 			submitBtn.addEventListener('click',function(evt){
+				validationCheck();
 				var xhr = new XMLHttpRequest();
 				var postUrl = "/project3/reserve/post"; 
 				xhr.open('POST', postUrl, true);
@@ -124,6 +125,35 @@ var postAction = {
 //				xhr.send();
 			});
 		}
+}
+
+//checking validation of reservation input
+function validationCheck(){
+	var emailValue = document.querySelector("#email").value;
+	var nameValue =  document.querySelector("#name").value;
+	var telValue =  document.querySelector("#tel").value;
+
+    
+    var nameValid = (/^[가-힣]{2,4}$/).test(nameValue);
+    if(!nameValid)  { 
+	      alert("올바르지 않은 이름입니다.");
+	      return;
+    } 
+    
+    
+    var telValid = (/^\d{3}-\d{3,4}-\d{4}$/).test(telValue);
+    if(!telValid)  { 
+	      alert("올바르지 않은 전화번호입니다.");
+	      return;
+    } 
+    
+	var emailValid = (/^[\w+_]\w+@\w+\.\w+$/).test(emailValue);
+    if(!emailValid)  { 
+	      alert("올바르지 않은 이메일입니다.");
+	      return;
+    } 
+
+        
 }
 
 //using object literal javascript
