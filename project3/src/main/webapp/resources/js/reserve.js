@@ -166,6 +166,29 @@ function btnMorePrivateInfo(){
 		}
 	});
 	
+	let agrBtn2 = document.querySelector('.btn_agreement_below');
+	agrBtn2.addEventListener('click',function(){
+		let moreInfo2 = document.querySelector('.useragreement_details_below');
+		if(moreInfo2.classList.contains('open')){
+			moreInfo2.classList.remove('open');
+		}else{
+			moreInfo2.classList.add('open')
+		}
+	});
+	
+	let infoChecked = document.querySelector('.chk_txt_label');
+	infoChecked.addEventListener('click',function(){
+		let isChecked = document.querySelector('#chk3');
+		console.log(isChecked.checked);
+		let sendBtn = document.querySelector('.bk_btn_wrap');
+		if(!isChecked.checked){
+			sendBtn.classList.remove('disable');
+		}else{
+			sendBtn.classList.add('disable');
+		}
+	})
+	
+	
 }
 
 //using object literal javascript

@@ -108,9 +108,9 @@
 					</div>
 					<div class="section_booking_agreement">
 						<div class="agreement all">
-							<input type="checkbox" id="chk3" class="chk_agree"> <label
-								for="chk3" class="label chk_txt_label"> <span>이용자
-									약관 전체동의</span>
+							<input type="checkbox" id="chk3" class="chk_agree"> 
+							<label for="chk3" class="label chk_txt_label">
+								 <span>이용자 약관 전체동의</span>
 							</label>
 							<div class="agreement_nessasary">
 								<span>필수동의</span>
@@ -142,10 +142,10 @@
 							<span class="chk_txt_span"> <i
 								class="spr_book ico_arr_ipc2"></i> <span>개인정보 제3자 제공 동의</span>
 							</span>
-							 <a class="btn_agreement"> <span class="btn_text">보기</span>
+							 <a class="btn_agreement btn_agreement_below"> <span class="btn_text">보기</span>
 								<i class="fn fn-down2"></i>
 							</a>
-							<div class="useragreement_details custom_details_wrap">
+							<div class="useragreement_details useragreement_details_below custom_details_wrap">
 								<div class="custom_details">
 									&lt;개인정보 제3자 제공 동의&gt;<br>
 									<br> 1. 개인정보를 제공받는 자 : 미디어앤아트<br>
