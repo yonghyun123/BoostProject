@@ -21,6 +21,7 @@
 			<header class="header_tit">
 				<h1 class="logo">
 				<input type="hidden" id="productId" value="${reservePage[0].productId}">
+				<input type="hidden" id="diplayInfoId" value="${reservePage[0].displayId}">
 					<a href="./mainpage.html" class="lnk_logo" title="네이버"> <span
 						class="spr_bi ico_n_logo">네이버</span>
 					</a> <a href="./mainpage.html" class="lnk_logo" title="예약"> <span

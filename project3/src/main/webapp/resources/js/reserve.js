@@ -87,10 +87,13 @@ var postAction = {
 		postAjax: function(){
 			var submitBtn = document.querySelector('.bk_btn');
 			submitBtn.addEventListener('click',function(evt){
-				validationCheck();
+				if(!validationCheck()){
+					return false;
+				};
 				var xhr = new XMLHttpRequest();
-				var postUrl = "/project3/reserve/post"; 
+				var postUrl = "/project3/reserve/insert"; 
 				xhr.open('POST', postUrl, true);
+				xhr.setRequestHeader("Content-type", "application/json");
 				var pmJson = null;
 			
 				xhr.onreadystatechange = function() {
@@ -102,28 +105,32 @@ var postAction = {
 					}
 				}
 				var data = {
-						userName: document.querySelector('#name').value,
-						userTel: document.querySelector('#tel').value,
-						userEmail: document.querySelector('#email').value,
+						id:1,
+						productId: parseInt(document.querySelector('#productId').value),
+						displayInfoId: parseInt(document.querySelector('#diplayInfoId').value),
+						reservationName: document.querySelector('#name').value,
+						reservationTel: document.querySelector('#tel').value,
+						reservationEmail: document.querySelector('#email').value,
 						priceList : [
 							{
-								priceId : document.querySelector('#A_price_id').value,
-								count: document.querySelector('#A_value').value
+								priceId : parseInt(document.querySelector('#A_price_id').value),
+								count: parseInt(document.querySelector('#A_value').value)
 							},
 							{
-								priceId : document.querySelector('#B_price_id').value,
-								count: document.querySelector('#B_value').value
+								priceId : parseInt(document.querySelector('#B_price_id').value),
+								count: parseInt(document.querySelector('#B_value').value)
 							},
 							{
-								priceId : document.querySelector('#Y_price_id').value,
-								count: document.querySelector('#Y_value').value
+								priceId : parseInt(document.querySelector('#Y_price_id').value),
+								count: parseInt(document.querySelector('#Y_value').value)
 							}
 							
 						]
 				}
 				console.log(data);
 				console.log(JSON.stringify(data));
-//				xhr.send();
+				console.log(data);
+				xhr.send();
 			});
 		}
 }
@@ -138,21 +145,22 @@ function validationCheck(){
     var nameValid = (/^[가-힣]{2,4}$/).test(nameValue);
     if(!nameValid)  { 
 	      alert("올바르지 않은 이름입니다.");
-	      return;
+	      return false;
     } 
     
     
     var telValid = (/^\d{3}-\d{3,4}-\d{4}$/).test(telValue);
     if(!telValid)  { 
 	      alert("올바르지 않은 전화번호입니다.");
-	      return;
+	      return false;
     } 
     
 	var emailValid = (/^[\w+_]\w+@\w+\.\w+$/).test(emailValue);
     if(!emailValid)  { 
 	      alert("올바르지 않은 이메일입니다.");
-	      return;
+	      return false;
     } 
+    return true;
 }
 
 function btnMorePrivateInfo(){
