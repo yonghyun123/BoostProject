@@ -93,7 +93,7 @@ public class ReserveController {
 		reserveService.insertPriceData(reserveData);
 		
 		
-		return "redirect:/";
+		return "redirect:2";
 	}
 }
 

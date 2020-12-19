@@ -23,6 +23,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.connect.project3.dto.PriceInfo;
 import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.dto.ReservationInfoData;
+import kr.or.connect.project3.dto.ReservationInfoPriceData;
 import kr.or.connect.project3.dto.ReservePage;
 
 
@@ -64,10 +65,12 @@ public class ReserveDao {
 		params.put("productId", productId);
 		return jdbc.query(GET_PRICE_INFO, params, priceInfoMapper);
 	}
-	/** */
+	/** 예약자 정보를 등록하는 쿼리 */
 	public Long insertReserveInfo(ReservationInfoData reservationInfoData){
 		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationInfoData);
 		return insertAction.executeAndReturnKey(params).longValue();
 	}
+	
+
 	
 }

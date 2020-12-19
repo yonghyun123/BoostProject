@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.project3.dao.ReserveDao;
+import kr.or.connect.project3.dao.ReservePriceDao;
+import kr.or.connect.project3.dto.PriceCountObject;
 import kr.or.connect.project3.dto.PriceInfo;
 import kr.or.connect.project3.dto.ProductType;
 import kr.or.connect.project3.dto.ReservationInfoData;
+import kr.or.connect.project3.dto.ReservationInfoPriceData;
 import kr.or.connect.project3.dto.ReserveData;
 import kr.or.connect.project3.dto.ReservePage;
 import kr.or.connect.project3.service.ReserveService;
@@ -21,6 +24,9 @@ public class ReserveServiceImpl implements ReserveService{
 	
 	@Autowired
 	private ReserveDao reserveDao;
+	
+	@Autowired
+	private ReservePriceDao reservePriceDao;
 	
 	@Override
 	@Transactional(readOnly=true)
@@ -78,7 +84,16 @@ public class ReserveServiceImpl implements ReserveService{
 		
 		Long reservationInfoId = reserveDao.insertReserveInfo(reservationInfo);
 		
-		return "";
+		
+		for(PriceCountObject item: reserveData.getPriceList()){
+			ReservationInfoPriceData reservationInfoPriceData = new ReservationInfoPriceData();
+			reservationInfoPriceData.setReservationInfoId(reservationInfoId);
+			reservationInfoPriceData.setCount(item.getCount());
+			reservationInfoPriceData.setProductPriceId(item.getPriceId());
+			reservePriceDao.insertReservationInfoPrice(reservationInfoPriceData);
+		}
+
+		return "Success";
 	}
 
 }
