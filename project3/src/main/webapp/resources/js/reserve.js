@@ -104,27 +104,26 @@ var postAction = {
 					}
 				}
 				var postData = {
-						id:1,
-						productId: parseInt(document.querySelector('#productId').value)
-//						displayInfoId: parseInt(document.querySelector('#diplayInfoId').value),
-//						reservationName: document.querySelector('#name').value,
-//						reservationTel: document.querySelector('#tel').value,
-//						reservationEmail: document.querySelector('#email').value,
-//						priceList : [
-//							{
-//								priceId : parseInt(document.querySelector('#A_price_id').value),
-//								count: parseInt(document.querySelector('#A_value').value)
-//							},
-//							{
-//								priceId : parseInt(document.querySelector('#B_price_id').value),
-//								count: parseInt(document.querySelector('#B_value').value)
-//							},
-//							{
-//								priceId : parseInt(document.querySelector('#Y_price_id').value),
-//								count: parseInt(document.querySelector('#Y_value').value)
-//							}
-//							
-//						]
+						productId: parseInt(document.querySelector('#productId').value),
+						displayInfoId: parseInt(document.querySelector('#diplayInfoId').value),
+						reservationName: document.querySelector('#name').value,
+						reservationTel: document.querySelector('#tel').value,
+						reservationEmail: document.querySelector('#email').value,
+						priceList : [
+							{
+								priceId : parseInt(document.querySelector('#A_price_id').value),
+								count: parseInt(document.querySelector('#A_value').value)
+							},
+							{
+								priceId : parseInt(document.querySelector('#B_price_id').value),
+								count: parseInt(document.querySelector('#B_value').value)
+							},
+							{
+								priceId : parseInt(document.querySelector('#Y_price_id').value),
+								count: parseInt(document.querySelector('#Y_value').value)
+							}
+							
+						]
 				}
 				
 				console.log(typeof(postData)); 

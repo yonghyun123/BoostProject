@@ -1,5 +1,6 @@
 package kr.or.connect.project3.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.connect.project3.dao.ReserveDao;
 import kr.or.connect.project3.dto.PriceInfo;
 import kr.or.connect.project3.dto.ProductType;
+import kr.or.connect.project3.dto.ReservationInfoData;
+import kr.or.connect.project3.dto.ReserveData;
 import kr.or.connect.project3.dto.ReservePage;
 import kr.or.connect.project3.service.ReserveService;
 
@@ -56,6 +59,26 @@ public class ReserveServiceImpl implements ReserveService{
 		}
 		return list;
 	
+	}
+
+	@Override
+	@Transactional(readOnly=false)
+	public String insertPriceData(ReserveData reserveData) {
+		
+		ReservationInfoData reservationInfo =  new ReservationInfoData();
+		reservationInfo.setCancelFlag(0);
+		reservationInfo.setCreateDate(new Date());
+		reservationInfo.setModifyDate(new Date());
+		reservationInfo.setReservationDate(new Date());
+		reservationInfo.setProductId(reserveData.getProductId());
+		reservationInfo.setDisplayInfoId(reserveData.getDisplayInfoId());
+		reservationInfo.setReservationName(reserveData.getReservationName());
+		reservationInfo.setReservationEmail(reserveData.getReservationEmail());
+		reservationInfo.setReservationTel(reserveData.getReservationTel());
+		
+		Long reservationInfoId = reserveDao.insertReserveInfo(reservationInfo);
+		
+		return "";
 	}
 
 }

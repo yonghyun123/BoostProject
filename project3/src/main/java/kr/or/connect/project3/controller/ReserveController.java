@@ -85,12 +85,12 @@ public class ReserveController {
 	}
 	
 	@PostMapping("/reserve/insert")
-	public String insertPriceData(@RequestBody ReserveData params){
+	public String insertPriceData(@RequestBody ReserveData reserveData){
 		
-		System.out.println(params.getProductId());
-//		System.out.println(params.get(0).getReservationTel());
-//		System.out.println(params.get(0).getPriceList().get(1).getPriceId());
-		
+		System.out.println(reserveData.getProductId());
+		System.out.println(reserveData.getReservationTel());
+		System.out.println(reserveData.getPriceList().get(1).getPriceId());
+		reserveService.insertPriceData(reserveData);
 		
 		
 		return "redirect:/";
