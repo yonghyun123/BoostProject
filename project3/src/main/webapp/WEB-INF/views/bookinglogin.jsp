@@ -30,17 +30,19 @@
             <booked-confirm>
                <div class="booking_login">
                   <h1 class="login_header"> <a href="./mainpage.html"  class="nbooking_logo spr_bi txt_logo" > <span translate="CM-NBOOKING">네이버 예약</span> </a> </h1>
-                  <!---->
                   <div >
-                     <form name="confirm_form" class="ng-pristine ng-valid" id="form1" action="./myreservation.html">
-                        <h2 class="login_header_sub border_bottom"> <span translate="CM-NON_MEMBER_BK_CONFIRMATION">비회원 예약확인</span> </h2>
+                     <form method = "post" name="confirm_form" class="ng-pristine ng-valid" id="form1" action="isEmail">
+                        <h2 class="login_header_sub border_bottom"> 
+                        	<span translate="CM-NON_MEMBER_BK_CONFIRMATION">비회원 예약확인</span> 
+                        </h2>
                         <div class="login_form"> 
-                           <label class="label_form" for="resrv_id" translate="CM-BOOKING_NUMBER">예약자 이메일 입력</label> 
-                           <input type="text" class="login_input ng-pristine ng-untouched ng-valid ng-empty" id="resrv_id" name="resrv_email" aria-invalid="false" placeholder="crong@naver.com" title="예매자이메일">  </div>
-                        <button type="submit" form="form1" class="login_btn confirm" > <span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span> </button> <!----> <!----> <!----> <!----> 
+                           <label class="label_form" for="resrv_id" translate="CM-BOOKING_NUMBER">예약자 이메일 입력</label> ${errorMessage} 
+                           <input type="text" class="login_input ng-pristine ng-untouched ng-valid ng-empty" id="resrv_id" name="reserve_email" aria-invalid="false" placeholder="crong@naver.com" title="예매자이메일">  </div>
+                        <button type="submit" form="form1" class="login_btn confirm" > 
+                        	<span translate="CM-MY_BOOKING_CHECK">내 예약 확인</span> 
+                        </button> 
                      </form>
                   </div>
-                  <!----> <!----> 
                </div>
             </booked-confirm>
          </div>
