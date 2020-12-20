@@ -95,14 +95,6 @@ var postAction = {
 				xhr.open('POST', postUrl, true);
 				xhr.setRequestHeader("Content-type", "application/json");
 			
-				xhr.onreadystatechange = function() {
-					if (xhr.readyState === XMLHttpRequest.DONE) {
-						if (xhr.status === 200) {
-						} else {
-							console.log('[' + xhr.status + ']: ' + xhr.statusText);
-						}
-					}
-				}
 				var postData = {
 						productId: parseInt(document.querySelector('#productId').value),
 						displayInfoId: parseInt(document.querySelector('#diplayInfoId').value),
@@ -128,6 +120,17 @@ var postAction = {
 				
 				console.log(typeof(postData)); 
 				xhr.send(JSON.stringify(postData)); // must use stringify in send statement!!!!!
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === XMLHttpRequest.DONE) {
+						if (xhr.status === 200) {
+							pageUrl = xhr.responseText;
+							console.log("예매성공!");
+							location.href="/project3/mainpage";
+						} else {
+							console.log('[' + xhr.status + ']: ' + xhr.statusText);
+						}
+					}
+				}
 			});
 		}
 }
