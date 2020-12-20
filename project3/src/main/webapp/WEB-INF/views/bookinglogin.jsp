@@ -17,9 +17,9 @@
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
       <meta name="format-detection" content="telephone=no, address=no, email=no">
       <title translate="CM-NBOOKING">네이버 예약</title>
-      <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+      <link href="<c:url value="/resources/css/bookinglogin.css" />" rel="stylesheet">
    </head>
-   <body class="biz  ko" >
+   <body class="biz ko" >
       <app>
          <toast-alert class="top_info hide booking_alert">
             <p class="top_info_txt"> <i class="fn fn-info1" aria-hidden="true"></i> <span class="_toast_alert_text"></span> </p>
