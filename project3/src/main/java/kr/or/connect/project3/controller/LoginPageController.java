@@ -23,6 +23,13 @@ public class LoginPageController {
 		return "bookinglogin"; 
 	}
 	
+	
+	@GetMapping("/myReservationPage")
+	public String getReservationPage(){
+		System.out.println("loginController=>>>");
+		return "myreservation"; 
+	}
+	
 	@PostMapping("/isEmail")
 	public String myPageLogin(@RequestParam(name="reserve_email") String reseveEmail,		
 			HttpSession session,
@@ -38,6 +45,6 @@ public class LoginPageController {
 			redirectAttr.addFlashAttribute("errorMessage","등록된 이메일이 없습니다.");
 			return "redirect:/loginPage";
 		}
-		return "redirect:/mainpage";
+		return "redirect:/myReservationPage";
 	}
 }
