@@ -191,7 +191,7 @@
 									<div class="right"></div>
 								</div>
 							</div>
-<article class="card_item">
+								<article class="card_item">
 									<a href="#" class="link_booking_details">
 										<div class="card_body">
 											<div class="left"></div>
