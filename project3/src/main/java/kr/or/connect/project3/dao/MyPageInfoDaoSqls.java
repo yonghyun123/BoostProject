@@ -6,5 +6,10 @@ public class MyPageInfoDaoSqls {
 			+ "where t1.product_id = t2.id "
 			+ "and t1.display_info_id = t3.id "
 			+ "and t1.reservation_email = :reservation_email";
-			
+	
+	public static final String SELECT_PRICE_INFO = "SELECT T3.ID, T2.COUNT, T3.PRICE "
+			+ "FROM reservation_info T1, reservation_info_price T2, product_price T3 "
+			+ "where T1.id = T2.reservation_info_id "
+			+ "and T2.product_price_id = T3.id "
+			+ "and T1.reservation_email = :reservation_email";
 }
