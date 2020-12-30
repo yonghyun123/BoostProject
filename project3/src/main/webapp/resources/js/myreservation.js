@@ -35,16 +35,28 @@ function getReserveAjax(url) {
 }
 
 function makeReservedInfo(reserveJson){
+	
 	var reserveHtml = document.querySelector('#booking_info').innerHTML;
-	console.log(reserveHtml);
+	let cancelInnerHtml = document.querySelector('#cancel_info').innerHTML;
+	
 	var bindTemplate = Handlebars.compile(reserveHtml);
+	let bindTemplate2 = Handlebars.compile(cancelInnerHtml);
+	
 	var explainHtml = document.querySelector('#confirmed_reserve');
-	var newHtml = '';
+    let cancelHtml = document.querySelector('#confirmed_cancel');
+	
+	let bookNewHtml = '';
+	let cancelNewHtml = '';
 
 	for(key in reserveJson.items){
-		newHtml += bindTemplate(reserveJson.items[key]);
+		if(reserveJson.items[key].cancelFlag == 0){
+			bookNewHtml += bindTemplate(reserveJson.items[key]);
+		} else{
+			cancelNewHtml += bindTemplate2(reserveJson.items[key]);
+		}
+		
 	}
-
-	explainHtml.innerHTML = newHtml;
+	cancelHtml.innerHTML = cancelNewHtml
+	explainHtml.innerHTML = bookNewHtml;
 	
 }
