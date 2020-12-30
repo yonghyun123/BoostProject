@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +26,10 @@ public class LoginPageController {
 	
 	
 	@GetMapping("/myReservationPage")
-	public String getReservationPage(){
-		System.out.println("loginController=>>>");
+	public String getReservationPage(@RequestParam(name="email") String reserveEmail,
+			ModelMap model){
+		System.out.println("loginController=>>>"+reserveEmail);
+		model.addAttribute("email", reserveEmail);
 		return "myreservation"; 
 	}
 	
@@ -45,6 +48,8 @@ public class LoginPageController {
 			redirectAttr.addFlashAttribute("errorMessage","등록된 이메일이 없습니다.");
 			return "redirect:/loginPage";
 		}
-		return "redirect:/myReservationPage";
+		String returnUrl = "redirect:/myReservationPage?email="+reseveEmail;
+		
+		return returnUrl;
 	}
 }
