@@ -52,4 +52,7 @@ public class LoginPageController {
 		
 		return returnUrl;
 	}
+	
+//	@PostMapping("/delete/{id}")
+//	public String delete
 }

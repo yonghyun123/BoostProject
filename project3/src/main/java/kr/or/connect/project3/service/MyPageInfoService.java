@@ -7,4 +7,5 @@ import kr.or.connect.project3.dto.ReservedPriceinfo;
 
 public interface MyPageInfoService {
 	public List<MyPageInfo> getMyPageInfo(String email);
+	public String deleteReserveInfo(int id);
 }

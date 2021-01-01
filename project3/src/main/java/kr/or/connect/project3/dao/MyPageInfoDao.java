@@ -38,4 +38,16 @@ public class MyPageInfoDao {
 		params.put("reservation_email", email);
 		return jdbc.query(SELECT_PRICE_INFO, params, priceInfoMapper);
 	}
+	
+	public String deleteReserveInf(int id){
+		Map<String, String> params = new HashMap<>();
+		params.put("reservation_info_id", String.valueOf(id));
+		int num = jdbc.update(DELETE_BY_ID, params);
+		if(num > 0){
+			return "SUCC";
+		} else{
+			return null;	
+		}
+	}
+
 }

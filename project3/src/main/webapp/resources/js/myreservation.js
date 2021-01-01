@@ -25,6 +25,7 @@ function getReserveAjax(url) {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			if (xhr.status === 200) {
 				pmJson = JSON.parse(xhr.responseText);
+				console.log(pmJson);
 				makeReservedInfo(pmJson);
 				
 			} else {

@@ -143,10 +143,11 @@
 		<a href="#" class="link_booking_details">
 			<div class="card_body">
 				<div class="left"></div>
+				<input type="hidden" id="input_email" value="{{id}}">
 				<div class="middle">
 					<div class="card_detail">
 						<em class="booking_number">No.0000000</em>
-						<h4 class="tit">서비스명/상품명</h4>
+						<h4 class="tit">{{description}}</h4>
 						<ul class="detail">
 							<li class="item">
 								<span class="item_tit">일정</span>
@@ -158,12 +159,6 @@
 								<span class="item_tit">장소</span>
 								<em class="item_dsc">
 									{{placeStreet}}
-								</em>
-							</li>
-							<li class="item">
-								<span class="item_tit">업체</span>
-								<em class="item_dsc">
-									{{description}}
 								</em>
 							</li>
 						</ul>

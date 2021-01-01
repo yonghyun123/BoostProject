@@ -1,6 +1,8 @@
 package kr.or.connect.project3.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,15 @@ public class MyPageInfoServiceImpl implements MyPageInfoService {
 		
 		
 		return myPageList;
+	}
+
+	@Override
+	@Transactional
+	public String deleteReserveInfo(int id) {
+		String returnStr = null;
+		myPageInfoDao.deleteReserveInf(id);
+			
+		return returnStr;
 	}
 
 

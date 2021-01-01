@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,5 +33,13 @@ public class MyPageInfoController {
 		Map<String,Object> pageInfoObj = new HashMap<>();
 		pageInfoObj.put("items", pageInfo);
 		return pageInfoObj;
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String deleteReserveInfo(@PathVariable("id") int id, @RequestParam("email") String email){
+		myPageInfoService.deleteReserveInfo(id);
+		//mypage를 redirect 하므로써 예약취소상태를 다시 호출
+		String returnUrl = "redirect:/mypage?email="+email;
+		return returnUrl;
 	}
 }
